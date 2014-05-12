@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?> 
+
+<stock> 
+
+<product productType="bolt" stockid="100"> 
+   <colour>black</colour> 
+   <length>50</length> 
+   <diameter>6</diameter> 
+   <price>1.65</price> 
+</product> 
+
+<product productType="bolt" stockid="101"> 
+   <colour>silver</colour> 
+   <length>25</length> 
+   <diameter>6</diameter> 
+   <price>0.95</price> 
+</product> 
+
+<product productType="nut" stockid="102"> 
+   <colour>silver</colour> 
+   <length>50</length> 
+   <diameter>6</diameter> 
+   <price>0.50</price> 
+</product> 
+
+<product productType="washer" stockid="103"> 
+   <colour>silver</colour> 
+   <length>50</length> 
+   <diameter>6</diameter> 
+   <price>0.35</price> 
+</product> 
+
+</stock>
