@@ -118,3 +118,29 @@ ls
 pwd
 quit
 exit
+ls
+cd cgi-bin/
+ls
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+python cart.cgi 
+exit

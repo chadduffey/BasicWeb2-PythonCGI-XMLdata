@@ -48,6 +48,8 @@ else:
   tableString = tableString + '<th>Sub Total</th>'
   tableString = tableString + '</tr>'
 
+  orderTotal = 0;
+
   # Check for each product: ----------------------------------------
   # Build the table
   for product in products:
@@ -79,10 +81,24 @@ else:
       tableString = tableString + "<td>" + str(itemNumber) + "</td>"
 
       #work out the subtotal for the item and display it
-      itemSubTotal = itemNumber 
-      tableString = tableString + "<td>" + str(itemSubTotal) + "</td>"
+      itemSubTotal = float(itemNumber) * float(price.childNodes[0].data)
+      tableString = tableString + "<td>" + "%.2f" % itemSubTotal + "</td>"
 
       tableString = tableString + '</tr>'
+      orderTotal = orderTotal + itemSubTotal
+
+  tableString = tableString + '<tr>'
+  tableString = tableString + '<th></th>'
+  tableString = tableString + '<th></th>'
+  tableString = tableString + '<th></th>'
+  tableString = tableString + '<th></th>'
+  tableString = tableString + '<th></th>'
+  tableString = tableString + '<th></th>'
+  tableString = tableString + '<th>Total</th>'
+  tableString = tableString + '<th>%.2f</th>' % orderTotal
+  tableString = tableString + '</tr>'
+  tableString = tableString + '</table>'
+  tableString = tableString + '</br>'
   #----------------------------------------------------------------    
 
 print "Content-type:text/html\r\n\r\n"

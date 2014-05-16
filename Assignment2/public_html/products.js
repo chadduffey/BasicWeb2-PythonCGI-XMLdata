@@ -3,46 +3,72 @@
  * student 11372834B
  */
 
+function init () 
+{
+	//not required any more
+	//enter any set up code here.
+}
+
 function calcTotal()
 {
-	  	
-	  	/*var boltNumber		= Number(document.getElementById("bolts").value);
-    	var nutNumber 		= Number(document.getElementById("nuts").value);
-    	var washerNumber 	= Number(document.getElementById("washers").value);
-    	
-    	var boltCost		= boltNumber 	* 2.15;
-    	var nutCost			= nutNumber 	* 0.45;
-    	var washerCost		= washerNumber 	* 0.30;
-    	
-    	//display only - dosnt change variables
-    	document.getElementById('b113').value = boltCost.toFixed(2);
-    	document.getElementById('n234').value = nutCost.toFixed(2);
-    	document.getElementById('w359').value = washerCost.toFixed(2); 
-				
-		//tidy any NaNs
-		if (isNaN(document.getElementById('b113').value)) 
-			document.getElementById('b113').value 	= 0;
-		if (isNaN(document.getElementById('n234').value)) 
-			document.getElementById('n234').value 	= 0;
-		if (isNaN(document.getElementById('w359').value)) 
-			document.getElementById('w359').value 	= 0;
-		if (isNaN(document.getElementById('total').value)) 
-			document.getElementById('total').value 	= 0;
-			
-		var total = boltCost + nutCost + washerCost;
-		document.getElementById('total').value = total.toFixed(2); */
+	xmlDoc=loadXMLDoc("http://csusap.csu.edu.au/~cduffe02/products.xml") // Path to the XML file;
+ 	
+ 	//use N to count the number of items to deal with
+ 	var N = xmlDoc.getElementsByTagName("product");
+ 	
+ 	totalValue = 0;
+
+ 	for (i = 0; i < N.length; i++) {
+        //syntax for accessing the attributes is:
+        //alert(xmlDoc.getElementsByTagName("product")[i].getAttribute('stockid'))
+        
+        //tidy any NaNs
+		if (isNaN(document.getElementById(xmlDoc.getElementsByTagName("product")[i].getAttribute('stockid')).value)) 
+			document.getElementById(xmlDoc.getElementsByTagName("product")[i].getAttribute('stockid')).value = 0;
+
+		//sub totals
+		var cost = xmlDoc.getElementsByTagName("price")[i].childNodes[0].nodeValue;
+		var number = document.getElementById(xmlDoc.getElementsByTagName("product")[i].getAttribute('stockid')).value;
+		var subTotal = cost * number;
+		document.getElementById(xmlDoc.getElementsByTagName("product")[i].getAttribute('stockid')+'s').value = subTotal.toFixed(2);
+		totalValue = totalValue + subTotal;
+ 	}
+
+ 	//update the total
+	document.getElementById("total").value = totalValue.toFixed(2);
+	
 }
 
 function validateForm()
 {
-	   	var b = document.getElementById("bolts").value;
-    	var n = document.getElementById("nuts").value;
-    	var w = document.getElementById("washers").value;
-	   	if ((isNaN(n)) || (isNaN(b)) || (isNaN(w))) 
-  		{
-    		alert("Oops. Please only use numbers for quantities in your order");
-    		return false;
-  		}	
+  	xmlDoc=loadXMLDoc("http://csusap.csu.edu.au/~cduffe02/products.xml") // Path to the XML file;
+ 	
+ 	//use N to count the number of items to deal with
+ 	var N = xmlDoc.getElementsByTagName("product");
+ 	
+ 	for (i = 0; i < N.length; i++) {
+        
+        //tidy any NaNs
+		if (isNaN(document.getElementById(xmlDoc.getElementsByTagName("product")[i].getAttribute('stockid')).value)) 
+		{
+			alert("Please only use numbers for quantities on the order form");
+			return false;
+		}
+ 	}
 }
+
+function loadXMLDoc(docname)
+ {
+	var xmlDocument;
+	if (window.XMLHttpRequest)
+	{
+		xmlDocument=new window.XMLHttpRequest();
+		xmlDocument.open("GET",docname,false);
+		xmlDocument.send("");
+		return xmlDocument.responseXML;
+	}
+	alert("Something has gone wrong!");
+	return null;
+ }
 
 	

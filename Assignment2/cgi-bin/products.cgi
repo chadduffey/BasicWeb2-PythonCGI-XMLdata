@@ -72,14 +72,28 @@ for product in products:
 	price = product.getElementsByTagName('price')[0]
 	print "<td>%s</td>" % price.childNodes[0].data
 
-	print '<td><input type = "text" name = "%s" id = "%s" size="2" /></td>' % (product.getAttribute("stockid"), product.getAttribute("stockid"))
-	print '<td><input type = "text" name = "%s" id = "%s" size="4" disabled="disabled"/></td>' % (product.getAttribute("productType"), product.getAttribute("stockid"))
+	print '<td><input type = "text" name = "%s" id = "%s" size="2" onblur="calcTotal()"/></td>' % (product.getAttribute("stockid"), product.getAttribute("stockid"))
+	print '<td><input type = "text" name = "%s" id = "%s" size="4" disabled="disabled"/></td>' % (product.getAttribute("productType"), product.getAttribute("stockid")+'s')
 
 	#close the table row
 	print "<tr>"
 	################
 
+#set up the sub total
+print '<tr>'
+print '<th></th>'
+print '<th></th>'
+print '<th></th>'
+print '<th></th>'
+print '<th></th>'
+print '<th></th>'
+print '<th>Total:</th>'
+print '<th><input type = "text" name = "total" id = "total" size="4" disabled="disabled"/></th>'
+print '</tr>'
+
+#finish table
 print '</table>'
+
 print '<p>'
 print '<input type = "submit" value = "Submit Order" />'
 print '<input type = "reset" value = "Clear Order Form"/>'

@@ -71,7 +71,7 @@ function validateForm()
    	}
  	
  	//If SUCCESSFULL - FORM VALIDATES:
-	alert("Your Order has been completed and will be shipped today. Enjoy.");
+	alert("Your Order has been completed and will be shipped today. \n\n\nEnjoy.");
 	//we are returning false so that the submit button dosnt attempt to go further for this assignment
 	return false;
 }
